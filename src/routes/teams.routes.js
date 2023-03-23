@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import tryCatch from '../utils/tryCatch.js';
 
 import {
   getTeams,
@@ -9,8 +10,8 @@ import {
 
 const router = Router();
 
-router.get('/', getTeams);
-router.get('/:id', getTeamById);
-router.post('/', createTeam);
+router.get('/', tryCatch(getTeams));
+router.get('/:id', tryCatch(getTeamById));
+router.post('/', tryCatch(createTeam));
 
 export default router;
