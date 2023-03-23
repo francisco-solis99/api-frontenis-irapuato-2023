@@ -29,6 +29,15 @@ export const Teams = (sequelize) => sequelize.define('teams', {
     },
     onDelete: 'CASCADE',
     allowNull: false
+  },
+  idGroup: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'groups',
+      key: 'id'
+    },
+    onDelete: 'CASCADE',
+    allowNull: false
   }
 }, {
   hooks: {
