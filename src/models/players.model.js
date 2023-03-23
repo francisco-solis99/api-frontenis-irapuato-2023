@@ -4,20 +4,11 @@ export const Players = (sequelize) => sequelize.define('players', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoincrement: true
+    autoIncrement: true
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  nickName: {
-    type: DataTypes.STRING
-  },
-  pictureUrl: {
-    type: DataTypes.STRING,
-    validate: {
-      isUrl: true
-    }
   },
   city: {
     type: DataTypes.STRING
@@ -28,7 +19,8 @@ export const Players = (sequelize) => sequelize.define('players', {
       model: 'teams',
       key: 'id'
     },
-    onDelete: 'CASCADE'
+    onDelete: 'CASCADE',
+    allowNull: false
   }
 }, {
   hooks: {

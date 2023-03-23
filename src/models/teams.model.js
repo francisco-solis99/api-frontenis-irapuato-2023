@@ -4,13 +4,31 @@ export const Teams = (sequelize) => sequelize.define('teams', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoincrement: true
+    autoIncrement: true
   },
   wins: {
     type: DataTypes.INTEGER
   },
-  losses: {
+  gamesPlayed: {
     type: DataTypes.INTEGER
+  },
+  player1Id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'players',
+      key: 'id'
+    },
+    onDelete: 'CASCADE',
+    allowNull: false
+  },
+  player2Id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'players',
+      key: 'id'
+    },
+    onDelete: 'CASCADE',
+    allowNull: false
   }
 }, {
   hooks: {
