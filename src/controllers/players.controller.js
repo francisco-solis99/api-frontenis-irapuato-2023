@@ -33,3 +33,17 @@ export async function createPlayer(req, res) {
   await newPlayer.save();
   return res.status(201).json({ message: 'Player created successfully', data: newPlayer });
 }
+
+// Update some player
+export async function updatePlayer(req, res) {
+  const { body, params: { id } } = req;
+  const player = await playersModel.findByPk(id);
+  if (!player) return res.status(404).json({ message: 'Player not found', data: null });
+
+  const updatedPlayer = await player.update({
+    name: body.name,
+    city: body.city,
+    teamId: body.teamId
+  });
+  return res.json({ message: 'Player created successfully', data: updatedPlayer });
+}
