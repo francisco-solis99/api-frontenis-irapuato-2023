@@ -30,7 +30,7 @@ export const Teams = (sequelize) => sequelize.define('teams', {
     onDelete: 'CASCADE',
     allowNull: false
   },
-  idGroup: {
+  groupId: {
     type: DataTypes.INTEGER,
     references: {
       model: 'groups',

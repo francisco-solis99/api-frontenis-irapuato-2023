@@ -27,10 +27,13 @@ export async function getTeamById(req, res) {
 
 // Create a Team
 export async function createTeam(req, res) {
-  const { wins, losses } = req.body;
+  const { wins, gamesPlayed, player1Id, player2Id, groupId } = req.body;
   const newTeam = await teamsModel.create({
     wins,
-    losses
+    gamesPlayed,
+    player1Id,
+    player2Id,
+    groupId
   });
   await newTeam.save();
   return res.status(201).json({ message: 'Team created successfully', data: newTeam });
