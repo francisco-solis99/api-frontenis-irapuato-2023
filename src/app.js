@@ -10,20 +10,44 @@ import errorLogger from './middlewares/errorLogger.js';
 const app = express();
 
 // Middlewares
-app.use(helmet()); // Ad  some HTTP headers
+app.use(helmet()); // Add  some HTTP headers
 app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());// inform we respond with json files
 
+// See the all available endpoints
 app.get('/', (req, res) => {
-  res.send('Hello Humans');
+  res.json([
+    {
+      endpoint: '/api/players',
+      description: 'Returns all the players from the tourment',
+      parameters: [
+        {
+          name: 'id',
+          endpoint: '/api/:playerId',
+          description: 'Returns a specific player from the tourment by his id'
+        }
+      ]
+    },
+    {
+      endpoint: '/api/teams',
+      description: 'Returns all the teams from the tourment',
+      parameters: [
+        {
+          name: 'id',
+          endpoint: '/api/:teamId',
+          description: 'Returns a specific team from the tourment by his id'
+        }
+      ]
+    }
+  ]);
 });
 
 // Routes
 app.use('/api', routes);
 
-// TODO: Add errors handler
+// TODO: Add static server
 app.use(
   errorLogger,
   errorHandler
