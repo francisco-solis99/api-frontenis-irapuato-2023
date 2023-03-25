@@ -12,24 +12,6 @@ export const Teams = (sequelize) => sequelize.define('teams', {
   gamesPlayed: {
     type: DataTypes.INTEGER
   },
-  player1Id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'players',
-      key: 'id'
-    },
-    onDelete: 'CASCADE',
-    allowNull: false
-  },
-  player2Id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'players',
-      key: 'id'
-    },
-    onDelete: 'CASCADE',
-    allowNull: false
-  },
   groupId: {
     type: DataTypes.INTEGER,
     references: {
