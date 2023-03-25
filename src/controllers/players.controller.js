@@ -19,7 +19,7 @@ export async function getPlayerById(req, res) {
   if (!player) {
     throw new AppError('Player not found', 400);
   }
-  return res.state(200).json(player);
+  return res.status(200).json({ message: 'Player found', data: player }); ;
 }
 
 // Create a player

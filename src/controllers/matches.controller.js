@@ -19,7 +19,7 @@ export async function getMatchById(req, res) {
   if (!match) {
     throw new AppError('Match not found', 400);
   }
-  return res.state(200).json(match);
+  return res.status(200).json({ message: 'Match found', data: match }); ;
 }
 
 // Create a match
