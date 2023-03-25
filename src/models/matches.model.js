@@ -23,14 +23,16 @@ export const Matches = (sequelize) => sequelize.define('matches', {
     references: {
       model: 'teams',
       key: 'id'
-    }
+    },
+    onDelete: 'CASCADE'
   },
   teamId2: {
     type: DataTypes.INTEGER,
     references: {
       model: 'teams',
       key: 'id'
-    }
+    },
+    onDelete: 'CASCADE'
   }
 }, {
   hooks: {

@@ -19,8 +19,7 @@ export const Players = (sequelize) => sequelize.define('players', {
       model: 'teams',
       key: 'id'
     },
-    onDelete: 'CASCADE',
-    allowNull: false
+    onDelete: 'CASCADE'
   }
 }, {
   hooks: {
