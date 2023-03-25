@@ -34,7 +34,7 @@ teams.hasMany(players);
 // A group has many teams
 groups.hasMany(teams);
 
-// A teams has many matches
+// A teams has many matches with two foreign keys
 teams.hasMany(matches, { foreignKey: 'teamId1' });
 teams.hasMany(matches, { foreignKey: 'teamId2' });
 
