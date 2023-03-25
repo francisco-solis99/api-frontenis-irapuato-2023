@@ -5,7 +5,14 @@ import { Teams as teamsModel } from '../models/teams.model.js';
 import { Groups as groupsModel } from '../models/groups.model.js';
 import { Matches as matchesModel } from '../models/matches.model.js';
 
-const sequelize = new Sequelize('sqlite://db.sqlite'); // init an instance of Sequelize
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    dialect: 'mysql',
+    port: process.env.DB_PORT,
+    logging: false
+  }
+);
 
 sequelize.authenticate().then(() => {
   console.log('Connection has been established successfully.');
