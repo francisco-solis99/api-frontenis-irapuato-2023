@@ -1,4 +1,4 @@
-import sequelize from '../config/config.js';
+import sequelize from '../config/db.js';
 import AppError from '../errors/AppError.js';
 const { groups: groupsModel } = sequelize.models;
 

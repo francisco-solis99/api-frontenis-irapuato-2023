@@ -1,4 +1,4 @@
-import sequelize from '../config/config.js';
+import sequelize from '../config/db.js';
 import AppError from '../errors/AppError.js';
 
 const { teams: teamsModel } = sequelize.models;
@@ -27,14 +27,26 @@ export async function getTeamById(req, res) {
 
 // Create a Team
 export async function createTeam(req, res) {
-  const { wins, gamesPlayed, player1Id, player2Id, groupId } = req.body;
+  const { wins, gamesPlayed, groupId } = req.body;
   const newTeam = await teamsModel.create({
     wins,
     gamesPlayed,
-    player1Id,
-    player2Id,
     groupId
   });
   await newTeam.save();
   return res.status(201).json({ message: 'Team created successfully', data: newTeam });
+}
+
+// Update some team
+export async function updatePlayer(req, res) {
+  const { body, params: { id } } = req;
+  const team = await teamsModel.findByPk(id);
+  if (!team) return res.status(404).json({ message: 'Team not found', data: null });
+
+  const updatedTeam = await team.update({
+    wins: body.wins,
+    gamesPlayed: body.gamesPlayed,
+    groupId: body.groupId
+  });
+  return res.json({ message: 'Team updated successfully', data: updatedTeam });
 }

@@ -3,7 +3,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import routes from './routes/index.routes.js';
-import sequelize from './config/config.js';
+import sequelize from './config/db.js';
 import errorHandler from './middlewares/errorHandler.js';
 import errorLogger from './middlewares/errorLogger.js';
 

@@ -1,4 +1,4 @@
-import sequelize from '../config/config.js';
+import sequelize from '../config/db.js';
 import AppError from '../errors/AppError.js';
 const { players: playersModel } = sequelize.models;
 
@@ -45,5 +45,5 @@ export async function updatePlayer(req, res) {
     city: body.city,
     teamId: body.teamId
   });
-  return res.json({ message: 'Player created successfully', data: updatedPlayer });
+  return res.json({ message: 'Player updated successfully', data: updatedPlayer });
 }
