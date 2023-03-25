@@ -1,12 +1,13 @@
+import 'dotenv/config';
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 
 import routes from './routes/index.routes.js';
-import sequelize from './config/db.js';
 import errorHandler from './middlewares/errorHandler.js';
 import errorLogger from './middlewares/errorLogger.js';
 
+// Create the app with express
 const app = express();
 
 // Middlewares
@@ -52,14 +53,6 @@ app.use(
   errorLogger,
   errorHandler
 );
-
-try {
-  sequelize.authenticate();
-  sequelize.sync();
-  console.log('Connected to DB');
-} catch (error) {
-  console.log('Unable to connect to DB: ', error);
-}
 
 const PORT = 4000;
 app.listen(PORT, () => {
