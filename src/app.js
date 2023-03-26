@@ -32,6 +32,17 @@ app.get('/', (req, res) => {
       ]
     },
     {
+      endpoint: '/api/groups',
+      description: 'Returns all the groups from the tourment',
+      parameters: [
+        {
+          name: 'id',
+          endpoint: '/api/:groupId',
+          description: 'Returns a specific group from the tourment by his id'
+        }
+      ]
+    },
+    {
       endpoint: '/api/teams',
       description: 'Returns all the teams from the tourment',
       parameters: [
