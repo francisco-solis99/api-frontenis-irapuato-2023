@@ -32,6 +32,7 @@ app.get('/', (req, res) => {
       ]
     },
     {
+
       endpoint: '/api/groups',
       description: 'Returns all the groups from the tourment',
       parameters: [

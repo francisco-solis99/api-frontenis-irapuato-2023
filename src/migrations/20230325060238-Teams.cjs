@@ -10,8 +10,10 @@ module.exports = {
         autoIncrement: true
       },
       wins: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
+      },
+      gamesPlayed: {
+        type: Sequelize.INTEGER
       },
       groupId: {
         type: Sequelize.INTEGER,
