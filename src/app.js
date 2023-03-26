@@ -67,6 +67,6 @@ app.use(
 );
 
 const PORT = 4000;
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log('Listen on Port ' + PORT);
 });
